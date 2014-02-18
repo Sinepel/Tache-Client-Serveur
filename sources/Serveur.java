@@ -58,12 +58,14 @@ public class Serveur {
 	
 			String message = reception.readLine();
 			StringBuilder retour  = new StringBuilder();
-			retour.append("bonjour " + message);
+			retour.append("Bonjour " + message);
+			retour.append(";Libelle\tAuteur\tDate butoire");
 			//Afficher les taches
 			for(Tache t: taches)
 			{
-				retour.append(";"+t.getLibelle());
+				retour.append(";"+t.getLibelle()+"\t"+t.getAuteur()+"\t"+t.getDate());
 			}
+			//envoie du retour
 			envoi.println(retour);
 		} catch (IOException e) {
 			e.printStackTrace();

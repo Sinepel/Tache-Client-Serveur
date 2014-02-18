@@ -49,6 +49,7 @@ public class Client {
 		    envoi.println(message);
 		    
 		    try {
+		    	//Gestion du retour
 		    	String recu = reception.readLine();
 		    	recu = recu.replaceAll(";","\n"); 
 				return recu;
