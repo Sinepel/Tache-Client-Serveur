@@ -12,10 +12,10 @@ public class ClientMain {
 		//Récupération du login en premier paramètre
 		client.setLogin(args[0]);
 
+		//client.envoyer(client.getLogin());
+		String resultat = "";
+		//System.out.println(resultat);
 
-		String resultat = client.envoyer(client.getLogin());		
-		System.out.println(resultat);
-		
 		Clavier clavier = new Clavier();
 		String entree = "";
 
