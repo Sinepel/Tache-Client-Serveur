@@ -7,6 +7,8 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.*;
+import java.util.Scanner;
+
 
 public class Client {
 	Socket clientSocket = null;
@@ -46,8 +48,35 @@ public class Client {
 	}
 	
 	public String envoyer(String message) {
-		    envoi.println(message);
-		    
+   		
+		/*envoi.println(this.getLogin());
+	    
+	    try {
+	    	//Gestion du retour
+	    	String recu = reception.readLine();
+	    	recu = recu.replaceAll(";","\n"); 
+			return recu;
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.exit(1);
+		}*/
+
+		//envoi.println(message);
+
+		Scanner sc = new Scanner(System.in);
+		if(message.equals("Ajouter")) {
+
+			envoi.println(this.getLogin());
+			
+
+			System.out.println("Quel est le nom de la tache ?");
+			envoi.println( sc.nextLine() );
+
+		}
+		else if (message.equals("Lister"))
+		{
+			envoi.println(this.getLogin());
+	    
 		    try {
 		    	//Gestion du retour
 		    	String recu = reception.readLine();
@@ -57,7 +86,11 @@ public class Client {
 				e.printStackTrace();
 				System.exit(1);
 			}
-		    return null;
+			envoi.println(message);
+		}
+
+	    
+	    return null;
 	}
 
 }
