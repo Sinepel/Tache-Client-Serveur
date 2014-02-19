@@ -104,6 +104,20 @@ public class Client {
 			System.out.println("Saisissez l'id de la tache a supprimer :");
 			envoi.println(sc.nextLine());
 		}
+		else if (message.equals("Terminer"))
+		{
+			envoi.println(message);
+			System.out.println("Saisissez l'id de la tache a terminer :");
+			envoi.println(sc.nextLine());
+		}
+		else if (message.equals("Dater"))
+		{
+			envoi.println(message);
+			System.out.println("Saisissez l'id de la tache a dater :");
+			envoi.println(sc.nextLine());
+			System.out.println("Saisissez la date: ");
+			envoi.println(sc.nextLine());
+		}
 	    return recu;
 	}
 

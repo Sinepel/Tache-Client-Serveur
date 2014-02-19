@@ -54,7 +54,7 @@ public class Child extends Thread {
 					for(Tache t: Serveur.taches)
 					{
 
-						retour.append(";"+indice+"\t"+t.getLibelle()+"\t"+t.getAuteur()+"\t"+t.getDate());
+						retour.append(";"+indice+"\t"+t.getLibelle()+"\t"+t.getAuteur()+"\t"+t.getDate()+"\t"+t.getStatus());
 						indice++;
 					}
 					//envoie de la liste des taches
@@ -62,7 +62,19 @@ public class Child extends Thread {
 				}
 				else if(action.equals("Affecter"))
 				{
-					
+					affecter(reception);
+				}
+				else if(action.equals("Supprimer"))
+				{
+					supprimer(reception);
+				}
+				else if(action.equals("Dater"))
+				{
+					dater(reception);
+				}
+				else if(action.equals("Terminer"))
+				{
+					terminer(reception);
 				}
 				if(action.equals("stop"))
 				{
@@ -88,6 +100,64 @@ public class Child extends Thread {
 			
 		}
 		Serveur.taches.add(new Tache(auteur,libelle,"date"));
+	}
+	public void affecter(BufferedReader reception)
+	{
+		String auteur;
+		Integer indice = 0;
+		auteur=""; 
+
+		try {
+			indice = Integer.parseInt(reception.readLine());
+			auteur 	= reception.readLine();
+			Serveur.taches.get(indice).setAuteur(auteur);
+
+		} catch( Exception e ) {
+			
+		}
+	}
+	public void supprimer(BufferedReader reception)
+	{
+		Integer indice = 0;
+
+		try {
+			indice = Integer.parseInt(reception.readLine());
+			//System.out.println(Serveur.taches.remove(Serveur.taches.get(indice)));
+			Serveur.taches.remove(indice.intValue());
+
+		} catch( Exception e ) {
+			System.out.println(e.toString());
+			
+		}
+	}
+	public void terminer(BufferedReader reception)
+	{
+		Integer indice = 0;
+
+		try {
+			indice = Integer.parseInt(reception.readLine());
+			//System.out.println(Serveur.taches.remove(Serveur.taches.get(indice)));
+			Serveur.taches.get(indice.intValue()).setStatus("Terminée");
+
+		} catch( Exception e ) {
+			System.out.println(e.toString());
+			
+		}
+	}
+	public void dater(BufferedReader reception)
+	{
+		String date;
+		Integer indice = 0;
+		date=""; 
+
+		try {
+			indice = Integer.parseInt(reception.readLine());
+			date 	= reception.readLine();
+			Serveur.taches.get(indice).setDate(date);
+
+		} catch( Exception e ) {
+			
+		}
 	}
 	
 
