@@ -9,13 +9,12 @@ import java.util.*;
 public class Child extends Thread {
 
 	private Socket unClient = null;
-	private boolean isRunning;
 	
 
 	public Child(Socket client) {
 		this.unClient = client;
 	
-		this.isRunning = true;
+		
 		System.out.println("Nouveau Client");
 	}
 
@@ -34,28 +33,41 @@ public class Child extends Thread {
 			reception = new BufferedReader(
                     new InputStreamReader(unClient.getInputStream()));
 	
-			
-
-
 			//Gestion de l'action
-			String action = reception.readLine();
-			if (action.equals("Ajouter"))
+			boolean quit = false;
+			while(!quit)
 			{
-				ajouter(reception);
-			}
-			else if (action.equals("Lister"))
-			{
-				String message = reception.readLine();
-				StringBuilder retour  = new StringBuilder();
-				//retour.append("Bonjour " + message);
-				retour.append(";Libelle\tAuteur\tDate butoire");
-				//Afficher les taches
-				for(Tache t: Serveur.taches)
+				String action = reception.readLine();
+				System.out.println(action);
+				if (action.equals("Ajouter"))
 				{
-					retour.append(";"+t.getLibelle()+"\t"+t.getAuteur()+"\t"+t.getDate());
+					ajouter(reception);
 				}
-				//envoie de la liste des taches
-				envoi.println(retour);
+				else if (action.equals("Lister"))
+				{
+					//String message = reception.readLine();
+					StringBuilder retour  = new StringBuilder();
+					//retour.append("Bonjour " + message);
+					retour.append(";Libelle\tAuteur\tDate butoire");
+					//Afficher les taches
+					int indice =0;
+					for(Tache t: Serveur.taches)
+					{
+
+						retour.append(";"+indice+"\t"+t.getLibelle()+"\t"+t.getAuteur()+"\t"+t.getDate());
+						indice++;
+					}
+					//envoie de la liste des taches
+					envoi.println(retour);
+				}
+				else if(action.equals("Affecter"))
+				{
+					
+				}
+				if(action.equals("stop"))
+				{
+					quit = true;
+				}
 			}
 		} catch (IOException e) {
 			e.printStackTrace();

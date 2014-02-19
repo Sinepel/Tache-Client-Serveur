@@ -67,17 +67,17 @@ public class Client {
 		Scanner sc = new Scanner(System.in);
 		if(message.equals("Ajouter")) {
 
+			envoi.println(message);
 			envoi.println(this.getLogin());
-			
-
 			System.out.println("Quel est le nom de la tache ?");
 			envoi.println( sc.nextLine() );
+
 			return recu;
 
 		}
 		else if (message.equals("Lister"))
 		{
-			envoi.println(this.getLogin());
+			envoi.println(message);
 	    
 		    try {
 		    	//Gestion du retour
