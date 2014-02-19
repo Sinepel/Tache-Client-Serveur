@@ -98,6 +98,12 @@ public class Client {
 			System.out.println("Saisissez le login de l'utilisateur a affecté :");
 			envoi.println(sc.nextLine());
 	    	}
+		else if (message.equals("Supprimer"))
+		{
+			envoi.println(message);
+			System.out.println("Saisissez l'id de la tache a supprimer :");
+			envoi.println(sc.nextLine());
+		}
 	    return recu;
 	}
 
