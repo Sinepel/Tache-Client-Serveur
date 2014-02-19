@@ -47,7 +47,7 @@ public class Child extends Thread {
 			{
 				String message = reception.readLine();
 				StringBuilder retour  = new StringBuilder();
-				retour.append("Bonjour " + message);
+				//retour.append("Bonjour " + message);
 				retour.append(";Libelle\tAuteur\tDate butoire");
 				//Afficher les taches
 				for(Tache t: Serveur.taches)

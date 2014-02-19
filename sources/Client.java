@@ -49,6 +49,7 @@ public class Client {
 	
 	public String envoyer(String message) {
    		
+		String recu = "";
 		/*envoi.println(this.getLogin());
 	    
 	    try {
@@ -71,6 +72,7 @@ public class Client {
 
 			System.out.println("Quel est le nom de la tache ?");
 			envoi.println( sc.nextLine() );
+			return recu;
 
 		}
 		else if (message.equals("Lister"))
@@ -79,7 +81,7 @@ public class Client {
 	    
 		    try {
 		    	//Gestion du retour
-		    	String recu = reception.readLine();
+		    	recu = reception.readLine();
 		    	recu = recu.replaceAll(";","\n"); 
 				return recu;
 			} catch (IOException e) {
@@ -90,7 +92,7 @@ public class Client {
 		}
 
 	    
-	    return null;
+	    return recu;
 	}
 
 }
