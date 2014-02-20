@@ -90,24 +90,6 @@ public class Client {
 			}
 			envoi.println(message);
 		}
-		else if (message.equals("Lister statut")
-		{
-			envoi.println(message);
-			System.out.println("Quel est le statut que vous souhaitez visualisez?(Libre,Affectée,Terminée)");
-			envoi.println(sc.nextLine());
-
-			try {
-		    	//Gestion du retour
-		    	recu = reception.readLine();
-		    	recu = recu.replaceAll(";","\n"); 
-				return recu;
-			} catch (IOException e) {
-				e.printStackTrace();
-				System.exit(1);
-			}
-			//envoi.println(message);
-			
-		}
 		else if (message.equals("Affecter"))
 		{
 			envoi.println(message);
