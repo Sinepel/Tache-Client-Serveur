@@ -90,7 +90,7 @@ public class Client {
 			}
 			envoi.println(message);
 		}
-		else if (message.equals("Lister statut")
+		else if (message.equals("Lister statut"))
 		{
 			envoi.println(message);
 			System.out.println("Quel est le statut que vous souhaitez visualisez?(Libre,Affectée,Terminée)");
@@ -105,7 +105,7 @@ public class Client {
 				e.printStackTrace();
 				System.exit(1);
 			}
-			//envoi.println(message);
+			envoi.println(message);
 			
 		}
 		else if (message.equals("Affecter"))

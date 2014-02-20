@@ -60,6 +60,26 @@ public class Child extends Thread {
 					//envoie de la liste des taches
 					envoi.println(retour);
 				}
+				else if(action.equals("Lister statut"))
+				{
+					//String message = reception.readLine();
+					StringBuilder retour  = new StringBuilder();
+					String statut = reception.readLine();
+					//retour.append("Bonjour " + message);
+					retour.append("Libelle\tAuteur\tDate butoire");
+					//Afficher les taches
+					int indice =0;
+					for(Tache t: Serveur.taches)
+					{
+						if(t.getStatus().equals(statut))
+						{
+							retour.append(";"+t.getLibelle()+"\t"+t.getAuteur()+"\t"+t.getDate()+"\t"+t.getStatus());
+						}
+					}
+					//envoie de la liste des taches
+					envoi.println(retour);
+
+				}
 				else if(action.equals("Affecter"))
 				{
 					affecter(reception);

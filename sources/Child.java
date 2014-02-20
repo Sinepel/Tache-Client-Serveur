@@ -131,6 +131,7 @@ public class Child extends Thread {
 			indice = Integer.parseInt(reception.readLine());
 			auteur 	= reception.readLine();
 			Serveur.taches.get(indice).setAuteur(auteur);
+			Serveur.taches.get(indice).setStatus("Affectée");
 
 		} catch( Exception e ) {
 			
