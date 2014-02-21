@@ -4,20 +4,20 @@ package fr.ustl.sil.da2i.socket;
 import java.io.*;
 import java.net.*;
 import java.util.*;
-//import socket.util.Commands;
+
 
 public class Child extends Thread {
-
+	//Initilisation du socket client
 	private Socket unClient = null;
 	
-
+	//CONSTRUCTEUR
 	public Child(Socket client) {
 		this.unClient = client;
 	
 		
 		System.out.println("Nouveau Client");
 	}
-
+	//Permet de lancer le service
 	public void run() {
 		System.out.println("Run Client");
 		realiseService();
@@ -27,7 +27,7 @@ public class Child extends Thread {
 		PrintWriter envoi = null;
 		BufferedReader reception = null;
 		try {
-	
+			//Récupération des entrées / sorties du client
 			envoi = new PrintWriter(unClient.getOutputStream(), true);
 			
 			reception = new BufferedReader(
@@ -37,6 +37,7 @@ public class Child extends Thread {
 			boolean quit = false;
 			while(!quit)
 			{
+				//Récupération du message / action du client, permettant de traiter la suite.
 				String action = reception.readLine();
 				System.out.println(action);
 				if (action.equals("Ajouter"))
@@ -106,7 +107,7 @@ public class Child extends Thread {
 			System.exit(1);
 		}
 	}
-
+	//Méthode qui gère l'ajout d'une tâche
 	public void ajouter(BufferedReader reception)
 	{
 		String libelle, auteur;
@@ -121,6 +122,7 @@ public class Child extends Thread {
 		}
 		Serveur.taches.add(new Tache(auteur,libelle,"date"));
 	}
+	//Méthode qui gère l'affectation d'une tâche
 	public void affecter(BufferedReader reception)
 	{
 		String auteur;
@@ -137,6 +139,7 @@ public class Child extends Thread {
 			
 		}
 	}
+	//Méthode qui gère la suppression d'une tâche
 	public void supprimer(BufferedReader reception)
 	{
 		Integer indice = 0;
@@ -151,6 +154,7 @@ public class Child extends Thread {
 			
 		}
 	}
+	//Méthode permettant de finaliser une tâche
 	public void terminer(BufferedReader reception)
 	{
 		Integer indice = 0;
@@ -165,6 +169,7 @@ public class Child extends Thread {
 			
 		}
 	}
+	//Permet de fixer la date d'une tâche
 	public void dater(BufferedReader reception)
 	{
 		String date;

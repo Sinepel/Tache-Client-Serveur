@@ -15,9 +15,11 @@ public class Serveur {
 	public static ArrayList<Tache> taches;
 
 	//Création de la tache de test
-	private Tache tache = new Tache("boulangc","holla senorita","26/06/2014");
+	private Tache tache = new Tache("boulangc","Partir end vacances","21/02/2014");
 	
-	
+	/*
+	*Constructeur du serveur, il crée la socket, initialise la liste des taches
+	*/
 	public Serveur() {
 		try {
 			serveurSocket = new ServerSocket(8599);
@@ -30,7 +32,9 @@ public class Serveur {
 			System.exit(1);
 		}
 	}
-	
+	/*
+	* Méthode qui gère les clients. A chaque client, elle crée en "Child".
+	*/
 	public void miseEnService() {
 		Socket unClient = null;
 		

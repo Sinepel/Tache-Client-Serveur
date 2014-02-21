@@ -7,7 +7,9 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-
+/**
+*Classe qui gère une tâche
+*/
 public class Tache{
 
 
@@ -16,6 +18,9 @@ public class Tache{
 	private String auteur; 
 	private String date;
 
+	/*
+	Constructeur
+	*/
 	public Tache(String auteur, String libelle,String date)
 	{
 		this.status = "Libre";
@@ -24,6 +29,9 @@ public class Tache{
 		this.date = date;
 	}
 
+	/*
+	Getter / Setter
+	*/
 	public String getStatus() {
 	    return this.status;
 	}
